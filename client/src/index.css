@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.header_categories::-webkit-scrollbar{
+	width: 0;
+	height: 0;
+}
+
+.nav_link.active{
+	background: #fb923c;
+	font-weight: 500;
+}
+
+section{
+	padding: 40px 0;
+}
