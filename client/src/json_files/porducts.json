@@ -1,0 +1,222 @@
+[
+  {
+    "id": 1,
+    "name": "Premium Leather Chair",
+    "price": 299.99,
+    "imageUrl": "https://via.placeholder.com/300x500",
+    "description": "Upgrade your space with this premium leather chair. Designed for comfort and style, it's the perfect addition to your home or office.",
+    "popular": true,
+    "colors": ["#EF4040", "#508D69", "#FB8B24", "#FF9B50"],
+    "quantity": 2,
+    "category": "Home and Living"
+  },
+  {
+    "id": 2,
+    "name": "Modern Coffee Table",
+    "price": 129.99,
+    "imageUrl": "https://via.placeholder.com/300",
+    "description": "Add a touch of sophistication to your living room with this modern coffee table. Its sleek design and quality craftsmanship make it a standout piece.",
+    "popular": false,
+    "colors": ["#508D69", "#FF9B50", "#EF4040"],
+    "quantity": 3,
+    "category": "Furniture"
+  },
+  {
+    "id": 3,
+    "name": "Smart LED TV (55-inch)",
+    "price": 699.99,
+    "imageUrl": "https://via.placeholder.com/300",
+    "description": "Experience immersive entertainment with our Smart LED TV. Features include a vibrant display, smart capabilities, and stunning audio quality.",
+    "popular": true,
+    "colors": ["#EF4040", "#FF9B50", "#508D69"],
+    "quantity": 2,
+    "category": "Electronics"
+  },
+  {
+    "id": 4,
+    "name": "Wireless Bluetooth Earbuds",
+    "price": 79.99,
+    "imageUrl": "https://via.placeholder.com/300",
+    "description": "Enjoy music on the go with these wireless Bluetooth earbuds. They offer high-quality sound, a comfortable fit, and convenient touch controls.",
+    "popular": false,
+    "colors": ["#508D69", "#EF4040", "#FB8B24"],
+    "quantity": 3,
+    "category": "Electronics"
+  },
+  {
+    "id": 5,
+    "name": "Modern Bookshelf",
+    "price": 179.99,
+    "imageUrl": "https://via.placeholder.com/300",
+    "description": "Organize your books in style with this modern bookshelf. Its unique design and sturdy construction make it a functional and aesthetic piece of furniture.",
+    "popular": true,
+    "colors": ["#EF4040", "#FB8B24", "#FF9B50"],
+    "quantity": 0,
+    "category": "Home and Living"
+  },
+  {
+    "id": 6,
+    "name": "Gaming Laptop (15.6-inch)",
+    "price": 1299.99,
+    "imageUrl": "https://via.placeholder.com/300",
+    "description": "Immerse yourself in gaming with this high-performance laptop. Features include a powerful processor, dedicated graphics, and a stunning display.",
+    "popular": false,
+    "colors": ["#EF4040", "#FB8B24"],
+    "quantity": 2,
+    "category": "Electronics"
+  },
+  {
+    "id": 7,
+    "name": "Portable Bluetooth Speaker",
+    "price": 49.99,
+    "imageUrl": "https://via.placeholder.com/300",
+    "description": "Take your music anywhere with this portable Bluetooth speaker. It offers clear sound, a long-lasting battery, and a compact design.",
+    "popular": true,
+    "colors": ["#EF4040", "#FF9B50", "#0000FF"],
+    "quantity": 2,
+    "category": "Electronics"
+  },
+  {
+    "id": 8,
+    "name": "Comfortable Sofa Set",
+    "price": 799.99,
+    "imageUrl": "https://via.placeholder.com/300",
+    "description": "Create a cozy living space with this comfortable sofa set. The plush cushions and modern design make it perfect for relaxation.",
+    "popular": false,
+    "colors": ["#508D69", "#FB8B24", "#EF4040"],
+    "quantity": 30,
+    "category": "Home and Living"
+  },
+  {
+    "id": 9,
+    "name": "Professional Camera Kit",
+    "price": 1499.99,
+    "imageUrl": "https://via.placeholder.com/300",
+    "description": "Capture stunning photos and videos with this professional camera kit. It includes a high-resolution camera, multiple lenses, and accessories.",
+    "popular": false,
+    "colors": ["#EF4040"],
+    "quantity": 0,
+    "category": "Electronics"
+  },
+  {
+    "id": 10,
+    "name": "Fitness Tracker Watch",
+    "price": 59.99,
+    "imageUrl": "https://via.placeholder.com/300",
+    "description": "Monitor your health and fitness with this versatile tracker watch. Features include heart rate monitoring, sleep tracking, and a stylish design.",
+    "popular": false,
+    "colors": ["#EF4040", "#FF9B50", "#FFFFFF"],
+    "quantity": 0,
+    "category": "Fitness"
+  },
+  {
+    "id": 11,
+    "name": "Stylish Desk Lamp",
+    "price": 49.99,
+    "imageUrl": "https://via.placeholder.com/300",
+    "description": "Illuminate your workspace with this stylish desk lamp. Its sleek design and adjustable features make it a perfect addition to your office or study.",
+    "popular": true,
+    "colors": ["#EF4040", "#508D69", "#FB8B24", "#FF9B50"],
+    "quantity": 2,
+    "category": "Home and Living"
+  },
+  {
+    "id": 12,
+    "name": "Men's Casual T-Shirt",
+    "price": 19.99,
+    "imageUrl": "https://via.placeholder.com/300",
+    "description": "Stay comfortable and trendy with this men's casual t-shirt. It's perfect for casual outings and everyday wear.",
+    "popular": false,
+    "colors": ["#508D69", "#FF9B50", "#EF4040"],
+    "quantity": 0,
+    "category": "Clothing"
+  },
+  {
+    "id": 13,
+    "name": "Compact Air Purifier",
+    "price": 129.99,
+    "imageUrl": "https://via.placeholder.com/300",
+    "description": "Ensure clean and fresh air with this compact air purifier. It's suitable for small spaces and offers efficient air filtration.",
+    "popular": true,
+    "colors": ["#EF4040", "#FF9B50", "#508D69"],
+    "quantity": 2,
+    "category": "Home and Living"
+  },
+  {
+    "id": 14,
+    "name": "Wireless Charging Pad",
+    "price": 39.99,
+    "imageUrl": "https://via.placeholder.com/300",
+    "description": "Charge your devices wirelessly with this convenient charging pad. It's compatible with various devices and features a sleek design.",
+    "popular": false,
+    "colors": ["#508D69", "#EF4040", "#FB8B24"],
+    "quantity": 3,
+    "category": "Electronics"
+  },
+  {
+    "id": 15,
+    "name": "Rustic Wall Clock",
+    "price": 59.99,
+    "imageUrl": "https://via.placeholder.com/300",
+    "description": "Add a touch of rustic charm to your home with this decorative wall clock. Its unique design enhances the aesthetic of any room.",
+    "popular": true,
+    "colors": ["#EF4040", "#FB8B24", "#FF9B50"],
+    "quantity": 2,
+    "category": "Home and Living"
+  },
+  {
+    "id": 16,
+    "name": "Wireless Gaming Mouse",
+    "price": 69.99,
+    "imageUrl": "https://via.placeholder.com/300",
+    "description": "Enhance your gaming experience with this wireless gaming mouse. It offers precise control and customizable features for avid gamers.",
+    "popular": false,
+    "colors": ["#EF4040", "#FB8B24"],
+    "quantity": 20,
+    "category": "Electronics"
+  },
+  {
+    "id": 17,
+    "name": "Travel Backpack",
+    "price": 89.99,
+    "imageUrl": "https://via.placeholder.com/300",
+    "description": "Stay organized on your travels with this spacious and durable travel backpack. It's designed for comfort and convenience.",
+    "popular": true,
+    "colors": ["#EF4040", "#FF9B50", "#0000FF"],
+    "quantity": 2,
+    "category": "Fashion"
+  },
+  {
+    "id": 18,
+    "name": "Elegant Dining Set",
+    "price": 499.99,
+    "imageUrl": "https://via.placeholder.com/300",
+    "description": "Upgrade your dining area with this elegant dining set. It features high-quality materials and a sophisticated design.",
+    "popular": false,
+    "colors": ["#508D69", "#FB8B24", "#EF4040"],
+    "quantity": 0,
+    "category": "Home and Living"
+  },
+  {
+    "id": 19,
+    "name": "Compact Digital Camera",
+    "price": 299.99,
+    "imageUrl": "https://via.placeholder.com/300",
+    "description": "Capture memorable moments with this compact digital camera. It offers high-resolution imaging and user-friendly features.",
+    "popular": false,
+    "colors": ["#EF4040"],
+    "quantity": 0,
+    "category": "Electronics"
+  },
+  {
+    "id": 20,
+    "name": "Outdoor Adventure Backpack",
+    "price": 79.99,
+    "imageUrl": "https://via.placeholder.com/300",
+    "description": "Embark on outdoor adventures with this rugged adventure backpack. It's designed for durability and offers ample storage space.",
+    "popular": false,
+    "colors": ["#EF4040", "#FF9B50", "#FFFFFF"],
+    "quantity": 2,
+    "category": "Sports and Outdoors"
+  }
+]
