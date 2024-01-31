@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const connectDB = require('./config/db');
-const apiRoutes = require('./routes/api');
+const authRoute = require('./routes/authRoute.js');
 
 const app = express();
 const PORT = 5000;  
@@ -10,13 +10,13 @@ const PORT = 5000;
 connectDB();
 
 // Enable CORS
-app.use(cors({ origin: '*' })); // Use a wildcard for development, update for production
+app.use(cors({ origin: '*' }));
 
 // Middleware
 app.use(express.json());
 
 // API routes
-app.use('/api', apiRoutes);
+app.use('/api/auth', authRoute);
 
 // Start the server
 app.listen(PORT, () => {
