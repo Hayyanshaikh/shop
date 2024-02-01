@@ -1,14 +1,16 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Button from '../../components/Button.jsx';
 import Alert from '../../components/Alert.jsx';
 import ProductCard_v1 from '../components/ProductCard_v1.jsx';
 import ProductCard_v2 from '../components/ProductCard_v2.jsx';
+  import { useSelector } from "react-redux";
 import CategoryCard from '../components/CategoryCard.jsx';
 import productData from '../../json_files/porducts.json';
 import categoriesData from '../../json_files/categories.json';
 
 const Home = () => {
   const [alert, setAlert] = useState(null);
+  const user = useSelector(state => state.authentication.user);
   const featuredData = [...categoriesData.filter(category => category.featured),
     ...categoriesData.flatMap(category => category.subcategories.filter(subcategory => subcategory.featured))
   ];
@@ -24,6 +26,16 @@ const Home = () => {
       setAlert(null);
     }, 3000)
   }
+  useEffect(() => {
+    setAlert({
+      type: "success",
+      message: user && user.message
+    });
+
+    setTimeout(()=>{
+      setAlert(null);
+    }, 3000)
+  }, [])
   return (
     <>
       {alert && <Alert type={alert.type} message={alert.message} />}

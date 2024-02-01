@@ -10,14 +10,15 @@ const Checkout = () => {
   const { products, totalPrice, shippingAmount } = useSelector((state) => state.cart);
   const orders = useSelector((state) => state.order.orders);
   const invoice = useSelector((state) => state.invoice);
+  const user = useSelector((state) => state.authentication.user.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [customerInfo, setCustomerInfo] = useState({
-    name: "",
-    address: "",
-    city: "",
-    zip: "",
-    country: "",
+    name: user && user.name,
+    address: user && user.address,
+    city: user && user.city,
+    zip: user && user.zipCode,
+    country: user && user.country,
   });
 
   const [paymentDetails, setPaymentDetails] = useState({

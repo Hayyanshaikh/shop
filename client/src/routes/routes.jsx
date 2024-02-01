@@ -7,6 +7,7 @@ import Checkout from '../theme/pages/Checkout.jsx';
 import Invoice from '../theme/pages/Invoice.jsx';
 import UserProfile from '../theme/pages/UserProfile.jsx';
 import Login from '../theme/pages/Login.jsx';
+import Signup from '../theme/pages/Signup.jsx';
 import ThemeLayout from '../theme/ThemeLayout.jsx';
 
 const routes = [
@@ -45,6 +46,10 @@ const routes = [
       {
         path: 'login',
         element: <Login />,
+      },
+      {
+        path: 'signup',
+        element: <Signup />,
       },
       
     ],

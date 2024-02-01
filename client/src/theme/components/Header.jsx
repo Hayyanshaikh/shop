@@ -8,7 +8,7 @@ import categoriesData from '../../json_files/categories.json'
 const Header = () => {
   const cartLength = useSelector(state => state.cart.products).length;
   const auth = useSelector(state => state.authentication);
-  const username = auth.user ? auth.user.username : null;
+  const username = auth.user ? auth.user.user.username : null;
   return (
     <header className="sticky top-0 z-10 shadow">
       <div className="bg-stone-900 py-3">

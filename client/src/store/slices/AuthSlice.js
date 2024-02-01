@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import users from '../../json_files/users.json'
+import { registerUser, loginUser } from '../actions/authActions.js'
 
 const initialState = {
   user: null,
@@ -10,24 +10,15 @@ export const AuthSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    login: (state, action) => {
-      state.auth = true
-      state.user = action.payload
-    },
-
-    signup: (state, action) => {
-      users.push(action.payload)
-      state.auth = true
-      state.user = action.payload
-    },
-
     logout: (state) => {
-      state.auth = false
-      state.user = null
-    }
+      state.auth = false;
+      state.user = null;
+    },
   },
 });
 
-export const { login, signup, logout } = AuthSlice.actions;
+// Exporting synchronous actions
+export const { logout } = AuthSlice.actions;
 
+// Exporting the reducer
 export default AuthSlice.reducer;
