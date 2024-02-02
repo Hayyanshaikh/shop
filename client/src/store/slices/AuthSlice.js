@@ -3,7 +3,7 @@ import { registerUser, loginUser } from '../actions/authActions.js'
 
 const initialState = {
   user: null,
-  auth: false,
+  auth: true,
 };
 
 export const AuthSlice = createSlice({

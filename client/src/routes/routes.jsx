@@ -9,6 +9,8 @@ import UserProfile from '../theme/pages/UserProfile.jsx';
 import Login from '../theme/pages/Login.jsx';
 import Signup from '../theme/pages/Signup.jsx';
 import ThemeLayout from '../theme/ThemeLayout.jsx';
+import AdminLayout from '../admin/AdminLayout.jsx';
+import Dashboard from '../admin/pages/Dashboard.jsx';
 
 const routes = [
   {
@@ -51,9 +53,18 @@ const routes = [
         path: 'signup',
         element: <Signup />,
       },
-      
     ],
   },
+  {
+    path:'admin',
+    element: <AdminLayout />,
+    children:[
+      {
+        index: true,
+        element: <Dashboard />,
+      }
+    ]
+  }
 ];
 
 export default routes;
