@@ -2,10 +2,10 @@ import React from 'react'
 
 const Footer = () => {
 	return (
-		<div className="admin_footer bg-gray-900 text-white p-4">
+		<footer className="admin_footer bg-gray-100/50 border-t text-black p-4">
 			Admin Footer
-		</div>
+		</footer>
 	)
 }
 
-export default Footer
+export default Footer;

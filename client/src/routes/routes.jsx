@@ -11,6 +11,12 @@ import Signup from '../theme/pages/Signup.jsx';
 import ThemeLayout from '../theme/ThemeLayout.jsx';
 import AdminLayout from '../admin/AdminLayout.jsx';
 import Dashboard from '../admin/pages/Dashboard.jsx';
+import ProductsAdmin from '../admin/pages/Products.jsx';
+import OrdersAdmin from '../admin/pages/Orders.jsx';
+import CustomersAdmin from '../admin/pages/Customers.jsx';
+import CategoriesAdmin from '../admin/pages/Categories.jsx';
+import CouponsAdmin from '../admin/pages/Coupons.jsx';
+import SettingsAdmin from '../admin/pages/Settings.jsx';
 
 const routes = [
   {
@@ -56,15 +62,40 @@ const routes = [
     ],
   },
   {
-    path:'admin',
+    path: 'admin',
     element: <AdminLayout />,
-    children:[
+    children: [
       {
         index: true,
+        path: 'dashboard',
         element: <Dashboard />,
-      }
-    ]
-  }
+      },
+      {
+        path: 'products',
+        element: <ProductsAdmin />,
+      },
+      {
+        path: 'orders',
+        element: <OrdersAdmin />,
+      },
+      {
+        path: 'customers',
+        element: <CustomersAdmin />,
+      },
+      {
+        path: 'categories',
+        element: <CategoriesAdmin />,
+      },
+      {
+        path: 'coupons',
+        element: <CouponsAdmin />,
+      },
+      {
+        path: 'settings',
+        element: <SettingsAdmin />,
+      },
+    ],
+  },
 ];
 
 export default routes;

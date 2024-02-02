@@ -2,7 +2,7 @@ import React from 'react'
 
 const Header = () => {
 	return (
-		<div className="admin_header bg-gray-900 text-white p-4">
+		<div className="admin_header text-black p-4 sticky top-0 border-b">
 			Admin Header
 		</div>
 	)

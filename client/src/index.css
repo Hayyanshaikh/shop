@@ -12,6 +12,13 @@
 	font-weight: 500;
 }
 
-section{
+section:not(.admin_main section){
 	padding: 40px 0;
+}
+.sidebar_menu_item[aria-current="page"]{
+	background: #fb923c;
+	font-weight: 500;
+}
+.admin_header{
+	background: #f9f9fa;
 }

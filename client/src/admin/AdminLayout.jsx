@@ -1,22 +1,33 @@
-import React from 'react'
-import { Outlet } from 'react-router-dom';
+import React, {useEffect} from 'react'
+import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
-import Sidebar from './components/Sidebar.jsx'
+import Sidebar from './components/Sidebar.jsx';
 
 const AdminLayout = () => {
+	const navigate = useNavigate();
+	const location = useLocation();
+  const currentUrl = location.pathname;
+	useEffect(() => {
+		if (currentUrl === "/admin") {
+			navigate("dashboard")
+		}
+	}, []);
+
 	return (
 		<>
-			<Header/>
 			<div className="admin_main flex flex-grow">
 				<Sidebar/>
-				<main className="admin_content flex-1 p-4 bg-white">
-					<Outlet/>
+				<main className="admin_content flex flex-col flex-1 h-screen overflow-auto">
+					<Header/>
+					<div className="flex-1 p-4 bg-white">	
+						<Outlet/>
+					</div>
+					<Footer/>
 				</main>
 			</div>
-			<Footer/>
 		</>
 	)
 }
 
-export default AdminLayout
+export default AdminLayout;
