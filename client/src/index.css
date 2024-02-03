@@ -20,5 +20,9 @@ section:not(.admin_main section){
 	font-weight: 500;
 }
 .admin_header{
+	z-index: 999;
 	background: #f9f9fa;
+}
+.order_products_table tr:not(:last-child) td{
+	border-bottom: 1px solid #e5e7eb;
 }

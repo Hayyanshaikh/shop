@@ -8,9 +8,11 @@ const AdminLayout = () => {
 	const navigate = useNavigate();
 	const location = useLocation();
   const currentUrl = location.pathname;
+	const updatedURL = currentUrl.split("/").pop();
+
 	useEffect(() => {
 		if (currentUrl === "/admin") {
-			navigate("dashboard")
+			navigate("dashboard");
 		}
 	}, []);
 
@@ -19,7 +21,7 @@ const AdminLayout = () => {
 			<div className="admin_main flex flex-grow">
 				<Sidebar/>
 				<main className="admin_content flex flex-col flex-1 h-screen overflow-auto">
-					<Header/>
+					<Header heading={updatedURL}/>
 					<div className="flex-1 p-4 bg-white">	
 						<Outlet/>
 					</div>
