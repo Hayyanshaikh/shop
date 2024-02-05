@@ -1,7 +1,7 @@
 import React from "react";
 import * as Icon from "@phosphor-icons/react";
 import Chart from '../components/Chart.jsx';
-import productsData from "../../json_files/porducts.json";
+import productsData from "../../json_files/products.json";
 import customersData from "../../json_files/customer.json";
 
 const Dashboard = () => {

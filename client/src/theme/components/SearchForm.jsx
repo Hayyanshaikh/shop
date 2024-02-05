@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import * as Icon from '@phosphor-icons/react';
-import porductData from '../../json_files/porducts.json'
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import * as Icon from "@phosphor-icons/react";
+import porductData from "../../json_files/products.json";
+import { Link } from "react-router-dom";
 
 const SearchForm = () => {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
   const handleInputChange = (event) => {
@@ -16,26 +16,24 @@ const SearchForm = () => {
   };
 
   const mockSearchFunction = (query) => {
-  if (!query) {
-    return [];
-  }
+    if (!query) {
+      return [];
+    }
 
-  const searchWords = query.toLowerCase().split(/\s+/);
+    const searchWords = query.toLowerCase().split(/\s+/);
 
-  const matches = porductData.filter(product => {
-    const productTitle = product.name.toLowerCase();
-    return searchWords.every(word => productTitle.includes(word));
-  });
+    const matches = porductData.filter((product) => {
+      const productTitle = product.name.toLowerCase();
+      return searchWords.every((word) => productTitle.includes(word));
+    });
 
-  return matches;
-};
+    return matches;
+  };
 
-const handleCloseResult = () => {
-  setSearchResults([]);
-  setSearchQuery('');
-}
-
-
+  const handleCloseResult = () => {
+    setSearchResults([]);
+    setSearchQuery("");
+  };
 
   return (
     <div className="relative w-full max-w-md ml-auto">
@@ -57,15 +55,28 @@ const handleCloseResult = () => {
           <ul>
             {searchResults.map((result) => (
               <li key={result.id} onClick={handleCloseResult}>
-                <Link to={`/categories/${result.category.toLowerCase().replace(/\ /g, "-")}/${result.name.toLowerCase().replace(/\ /g, "-")}`} className="block p-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100">
+                <Link
+                  to={`/categories/${result.category
+                    .toLowerCase()
+                    .replace(/\ /g, "-")}/${result.name
+                    .toLowerCase()
+                    .replace(/\ /g, "-")}`}
+                  className="block p-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100"
+                >
                   <div className="flex items-center">
-                    <img src={result.imageUrl} alt={result.name} className="w-10 h-10 rounded mr-2 object-cover" />
+                    <img
+                      src={result.imageUrl}
+                      alt={result.name}
+                      className="w-10 h-10 rounded mr-2 object-cover"
+                    />
                     <div>
                       <p className="font-semibold">{result.name}</p>
-                      <p className="text-gray-500">${result.price.toFixed(2)}</p>
+                      <p className="text-gray-500">
+                        ${result.price.toFixed(2)}
+                      </p>
                     </div>
                   </div>
-                </Link> 
+                </Link>
               </li>
             ))}
           </ul>

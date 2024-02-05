@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Icon from "@phosphor-icons/react";
-import productData from '../../json_files/porducts.json'
+import productData from '../../json_files/products.json'
 
 const Footer = () => {
   const filterPopular = productData.filter(popular => popular.popular === true).slice(0, 2);

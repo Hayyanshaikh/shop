@@ -4,7 +4,7 @@ import Alert from '../../components/Alert.jsx';
 import ProductCard_v1 from '../components/ProductCard_v1.jsx';
 import ProductCard_v2 from '../components/ProductCard_v2.jsx';
 import CategoryCard from '../components/CategoryCard.jsx';
-import productData from '../../json_files/porducts.json';
+import productData from '../../json_files/products.json';
 import categoriesData from '../../json_files/categories.json';
 
 const Home = () => {

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import { useParams } from "react-router-dom";
-import productData from "../../json_files/porducts.json";
+import productData from "../../json_files/products.json";
 import Button from '../../components/Button.jsx';
 import ProductCard_v2 from '../components/ProductCard_v2.jsx';
 import Alert from '../../components/Alert.jsx';

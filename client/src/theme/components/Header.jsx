@@ -3,12 +3,18 @@ import {useSelector} from 'react-redux';
 import * as Icon from "@phosphor-icons/react";
 import { Link, NavLink } from "react-router-dom";
 import SearchForm from './SearchForm.jsx';
-import categoriesData from '../../json_files/categories.json'
+import products from '../../json_files/products.json'
 
 const Header = () => {
   const cartLength = useSelector(state => state.cart.products).length;
   const auth = useSelector(state => state.authentication);
   const username = auth.user ? auth.user.user.username : null;
+
+  const categoriesData = () => {
+    const categories = products.map((item) => item.category);
+    const uniqueCategories = Array.from(new Set(categories));
+    return uniqueCategories;
+  };
   return (
     <header className="sticky top-0 z-10 shadow">
       <div className="bg-stone-900 py-3">
@@ -50,13 +56,13 @@ const Header = () => {
                     Home
                   </NavLink>
                 </li>
-              {categoriesData.map((category, index) => (
+              {categoriesData().map((category, index) => (
                 <li key={index} className="flex-shrink-0">
                   <NavLink
-                    to={`categories/${category.name.toLowerCase().replace(/\ /g, "-")}`}
+                    to={`categories/${category.toLowerCase().replace(/\ /g, "-")}`}
                     className="nav_link text-black py-2 px-4 block transition hover:text-black hover:bg-orange-400"
                   >
-                    {category.name}
+                    {category}
                   </NavLink>
                 </li>
               ))}

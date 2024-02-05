@@ -2,31 +2,50 @@ import { Link } from 'react-router-dom';
 import { Menu } from '@headlessui/react';
 import * as Icon from "@phosphor-icons/react";
 
-const Dropdown = ({ menuItems, title }) => {
+const Dropdown = ({ menuItems, title, position, icon, onClick }) => {
+  const handleClick = (label) => {
+    if (onClick) {
+      onClick(label);
+    }
+  }
   return (
     <div className="relative inline-block">
       <Menu>
-        <Menu.Button className="bg-gray-100 px-4 py-2 flex items-center gap-1 rounded">
-          <span className="text-sm font-semibold">{title}</span>
-          <Icon.CaretDown size={14} weight="bold"/>
+        <Menu.Button className={`bg-gray-100 ${title ? "px-4" : "px-2"} py-2 flex items-center gap-1 rounded`}>
+          {
+            title ? <span className="text-sm font-semibold">{title}</span> : ""
+          }
+
+          {
+            icon ? icon : <Icon.CaretDown size={14} weight="bold"/>
+          }
         </Menu.Button>
-        <Menu.Items className="absolute left-0 mt-2 bg-white border rounded w-52 p-1 z-10">
+        <Menu.Items className={`absolute ${position ? position : "left-0"} mt-2 bg-white border rounded min-w-[120px] p-1 z-10`}>
           {menuItems.map((item, index) => (
             <Menu.Item key={index}>
               {({ active }) => (
                 item.to ? (
                   <Link
                     to={item.to}
-                    className={`block px-4 py-2 rounded transition ${active && 'bg-orange-500 text-black'}`}
+                    className={`block px-3 py-2 rounded transition flex items-center gap-2 ${active && 'bg-orange-400 text-black'}`}
                   >
-                    {item.label}
+                    {
+                      item.icon ? item.icon : ''
+                    }
+
+                    <span className="text-sm font-medium">{item.label}</span>
                   </Link>
                 ) : (
                   <button
                     type="button"
-                    className={`block px-4 py-2 w-full text-left rounded transition ${active && 'bg-orange-500 text-black'}`}
+                    onClick={() => handleClick(item.label.toLowerCase())}
+                    className={`block px-3 py-2 w-full text-left rounded transition flex items-center gap-2 ${active && 'bg-orange-400 text-black'}`}
                   >
-                    {item.label}
+
+                    {
+                      item.icon ? item.icon : ''
+                    }
+                    <span className="text-sm font-medium">{item.label}</span>
                   </button>
                 )
               )}
