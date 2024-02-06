@@ -7,8 +7,8 @@
     "address": "123 Main St, Cityville",
     "imageUrl": "https://via.placeholder.com/150",
     "orders": [
-      { "orderId": 101, "product": "Product A", "quantity": 2, "total": 50, "productImageUrl": "https://via.placeholder.com/50" },
-      { "orderId": 102, "product": "Product B", "quantity": 1, "total": 30, "productImageUrl": "https://via.placeholder.com/50" }
+      { "orderId": 101, "productId": 1 },
+      { "orderId": 102, "productId": 2 }
     ]
   },
   {
@@ -19,8 +19,8 @@
     "address": "456 Oak St, Townsville",
     "imageUrl": "https://via.placeholder.com/150",
     "orders": [
-      { "orderId": 103, "product": "Product C", "quantity": 3, "total": 75, "productImageUrl": "https://via.placeholder.com/50" },
-      { "orderId": 104, "product": "Product D", "quantity": 1, "total": 40, "productImageUrl": "https://via.placeholder.com/50" }
+      { "orderId": 103, "productId": 3 },
+      { "orderId": 104, "productId": 4 }
     ]
   },
   {
@@ -31,7 +31,7 @@
     "address": "789 Pine St, Villageland",
     "imageUrl": "https://via.placeholder.com/150",
     "orders": [
-      { "orderId": 105, "product": "Product E", "quantity": 1, "total": 20, "productImageUrl": "https://via.placeholder.com/50" }
+      { "orderId": 105, "productId": 5 }
     ]
   },
   {
@@ -42,8 +42,8 @@
     "address": "101 Cedar St, Hamletville",
     "imageUrl": "https://via.placeholder.com/150",
     "orders": [
-      { "orderId": 106, "product": "Product F", "quantity": 2, "total": 50, "productImageUrl": "https://via.placeholder.com/50" },
-      { "orderId": 107, "product": "Product G", "quantity": 1, "total": 30, "productImageUrl": "https://via.placeholder.com/50" }
+      { "orderId": 106, "productId": 6 },
+      { "orderId": 107, "productId": 7 }
     ]
   },
   {
@@ -54,8 +54,8 @@
     "address": "121 Elm St, Suburbia",
     "imageUrl": "https://via.placeholder.com/150",
     "orders": [
-      { "orderId": 108, "product": "Product H", "quantity": 1, "total": 25, "productImageUrl": "https://via.placeholder.com/50" },
-      { "orderId": 109, "product": "Product I", "quantity": 3, "total": 60, "productImageUrl": "https://via.placeholder.com/50" }
+      { "orderId": 108, "productId": 8 },
+      { "orderId": 109, "productId": 9 }
     ]
   }
 ]

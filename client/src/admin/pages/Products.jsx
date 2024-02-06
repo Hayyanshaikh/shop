@@ -1,25 +1,18 @@
 import React, { useState, useEffect } from "react";
+import Select from "../components/Select.jsx";
 import Dropdown from "../components/Dropdown.jsx";
 import productsData from "../../json_files/products.json";
 import * as Icon from "@phosphor-icons/react";
-import useFilter from "../../hooks/useFilter.jsx";
-import Pagination from '../../components/Pagination.jsx'
+import Pagination from '../../components/Pagination.jsx';
 
 const Products = () => {
-  const { value, data, setData, setValue } = useFilter({
-    initialValue: "",
-    initialData: productsData,
-  });
+  const [value, setValue] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
 
-  const menuItemsa = () => {
-    const categories = productsData.map((item) => item.category);
-    const uniqueCategories = Array.from(new Set(categories));
-
-    const labels = uniqueCategories.map((item) => ({
-      label: item,
-    }));
-
-    return labels;
+  const menuItems = () => {
+    const category = productsData.map((item) => item.category);
+    const uniqueCategories = Array.from(new Set(category));
+    return uniqueCategories;
   };
 
   const actionButtons = [
@@ -33,15 +26,19 @@ const Products = () => {
     },
   ];
 
-  const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
-
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
+
+  const filteredData = productsData.filter((product) =>
+    product.name.toLowerCase().includes(value.toLowerCase()) ||
+    product.category.toLowerCase().includes(value.toLowerCase())
+  );
+
 
   return (
     <div>
@@ -58,9 +55,9 @@ const Products = () => {
             <Icon.MagnifyingGlass size={16} />
           </button>
         </div>
-        <Dropdown
-          menuItems={menuItemsa()}
-          title="Filter Categories"
+        <Select 
+          data={menuItems()}
+          title="Filter Category"
           onClick={(label) => setValue(label)}
         />
       </div>
@@ -75,7 +72,7 @@ const Products = () => {
           </tr>
         </thead>
         <tbody>
-          {data.slice(startIndex, endIndex).map((product) => (
+          {filteredData.slice(startIndex, endIndex).map((product) => (
             <tr key={product.id}>
               <td className="py-2 px-4 border-b">{product.id}</td>
               <td className="py-2 px-4 border-b">
@@ -110,7 +107,7 @@ const Products = () => {
         </tbody>
       </table>
       <Pagination
-        totalItems={data.length}
+        totalItems={filteredData.length}
         itemsPerPage={itemsPerPage}
         onPageChange={handlePageChange}
       />

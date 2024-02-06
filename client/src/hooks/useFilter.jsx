@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 
-const useFilter = ({ initialValue, initialData }) => {
-  const [data, setData] = useState(initialData);
+const useFilter = ({ initialValue, data }) => {
+  const [filteredData, setFilteredData] = useState(data);
   const [value, setValue] = useState(initialValue);
 
   useEffect(() => {
     try {
       const regex = new RegExp(value, 'i');
-      const filteredData = initialData.filter(item => {
+      const filteredData = data.filter(item => {
         const properties = Object.keys(item);
         for (const prop of properties) {
           if (regex.test(item[prop])) {
@@ -17,18 +17,16 @@ const useFilter = ({ initialValue, initialData }) => {
         return false;
       });
 
-      if (JSON.stringify(data) !== JSON.stringify(filteredData)) {
-        setData(filteredData);
-      }
+      setFilteredData(filteredData);
     } catch (error) {
       console.error('Invalid regular expression:', error.message);
     }
-  }, [value, initialData, data]);
+  }, [value, data]);
 
   return {
     value,
-    data,
-    setData,
+    data: filteredData,
+    setData: setFilteredData,
     setValue,
   };
 };
