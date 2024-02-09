@@ -1,4 +1,3 @@
-// Theme Files Imports
 import Home from '../theme/pages/Home.jsx';
 import SingleProduct from '../theme/pages/SingleProduct.jsx';
 import Products from '../theme/pages/Products.jsx';
@@ -17,6 +16,12 @@ import CustomersAdmin from '../admin/pages/Customers.jsx';
 import CategoriesAdmin from '../admin/pages/Categories.jsx';
 import CouponsAdmin from '../admin/pages/Coupons.jsx';
 import SettingsAdmin from '../admin/pages/Settings.jsx';
+import AddProduct from '../admin/pages/AddProduct.jsx';
+import AddCategory from '../admin/pages/AddCategory.jsx';
+import OrderDetail from '../admin/pages/OrderDetail.jsx';
+import CustomerDetail from '../admin/pages/CustomerDetail.jsx';
+import EditProduct from '../admin/pages/EditProduct.jsx'; // Added
+import EditCategory from '../admin/pages/EditCategory.jsx'; // Added
 
 const routes = [
   {
@@ -79,12 +84,36 @@ const routes = [
         element: <OrdersAdmin />,
       },
       {
+        path: 'orders/:orderId',
+        element: <OrderDetail />,
+      },
+      {
         path: 'customers',
         element: <CustomersAdmin />,
       },
       {
+        path: 'customers/:customerId',
+        element: <CustomerDetail />,
+      },
+      {
         path: 'categories',
         element: <CategoriesAdmin />,
+      },
+      {
+        path: 'add-product',
+        element: <AddProduct />,
+      },
+      {
+        path: 'add-category',
+        element: <AddCategory />,
+      },
+      {
+        path: 'products/:productId', // Added path for EditProduct
+        element: <EditProduct />,
+      },
+      {
+        path: 'categories/:categoryId', // Added path for EditCategory
+        element: <EditCategory />,
       },
       {
         path: 'coupons',

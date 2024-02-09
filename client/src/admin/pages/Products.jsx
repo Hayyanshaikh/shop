@@ -4,6 +4,8 @@ import Dropdown from "../components/Dropdown.jsx";
 import productsData from "../../json_files/products.json";
 import * as Icon from "@phosphor-icons/react";
 import Pagination from '../../components/Pagination.jsx';
+import Button from '../../components/Button.jsx';
+import {Link} from 'react-router-dom'
 
 const Products = () => {
   const [value, setValue] = useState("");
@@ -55,11 +57,17 @@ const Products = () => {
             <Icon.MagnifyingGlass size={16} />
           </button>
         </div>
-        <Select 
-          data={menuItems()}
-          title="Filter Category"
-          onClick={(label) => setValue(label)}
-        />
+        <div className="flex gap-2 items-center">
+          <Select 
+            data={menuItems()}
+            title="Filter Category"
+            onClick={(label) => setValue(label)}
+          />
+          <Button
+            text="Add Product"
+            link="/admin/add-product"
+          />
+        </div>
       </div>
       <table className="min-w-full bg-white border text-left">
         <thead>
@@ -76,14 +84,14 @@ const Products = () => {
             <tr key={product.id}>
               <td className="py-2 px-4 border-b">{product.id}</td>
               <td className="py-2 px-4 border-b">
-                <div className="flex items-center gap-2">
+                <Link to={product.id.toString()} className="flex items-center gap-2">
                   <img
                     src={product.imageUrl}
                     alt={product.name}
                     className="h-8 w-8 rounded-full"
                   />
                   <span>{product.name}</span>
-                </div>
+                </Link>
               </td>
               <td className="py-2 px-4 border-b">
                 ${product.price.toFixed(2)}
