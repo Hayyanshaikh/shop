@@ -3,7 +3,6 @@ import SingleProduct from '../theme/pages/SingleProduct.jsx';
 import Products from '../theme/pages/Products.jsx';
 import Cart from '../theme/pages/Cart.jsx';
 import Checkout from '../theme/pages/Checkout.jsx';
-import Invoice from '../theme/pages/Invoice.jsx';
 import UserProfile from '../theme/pages/UserProfile.jsx';
 import Login from '../theme/pages/Login.jsx';
 import Signup from '../theme/pages/Signup.jsx';
@@ -43,10 +42,6 @@ const routes = [
       {
         path: 'checkout',
         element: <Checkout />,
-      },
-      {
-        path: 'checkout/:invoice',
-        element: <Invoice />,
       },
       {
         path: 'categories/:category/:productName',

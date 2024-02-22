@@ -1,24 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "../../components/Button.jsx";
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { placeOrder } from "../../store/slices/OrderSlice.js";
-import { invoiceData } from "../../store/slices/InvoiceSlice.js";
 import { cartEmpty } from "../../store/slices/CartSlice.js";
 
 const Checkout = () => {
   const { products, totalPrice, shippingAmount } = useSelector((state) => state.cart);
   const orders = useSelector((state) => state.order.orders);
-  const invoice = useSelector((state) => state.invoice);
-  const user = useSelector((state) => state.authentication.user.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (products.length < 1) {
+      navigate("/")
+    }
+  }, [products])
+
   const [customerInfo, setCustomerInfo] = useState({
-    name: user && user.name,
-    address: user && user.address,
-    city: user && user.city,
-    zip: user && user.zipCode,
-    country: user && user.country,
+    name: "",
+    address: "",
+    city: "",
+    zip: "",
+    country: "",
   });
 
   const [paymentDetails, setPaymentDetails] = useState({
@@ -49,30 +53,12 @@ const Checkout = () => {
 		  price: product.price.toFixed(0),
 		  quantity: product.quantity
 		}));
-    var billingDetail = { customerInfo, paymentDetails, confirmProducts, grandPrice };
-    const invNumber = orders.length;
-    const invoiceData2 = {
-      invoiceNumber: `INV-${invNumber}`,
-      billTo: {
-        name: customerInfo.name,
-        address: customerInfo.address,
-        city: customerInfo.city,
-        country: customerInfo.country
-      },
-      products: confirmProducts,
-      shippingAmount: shippingAmount,
-      total: grandPrice,
-      paymentMethod: 'Credit Card',
-      cardNumber: paymentDetails.cardNumber,
-      expirationDate: paymentDetails.expirationDate,
-      cvv: paymentDetails.cvv,
-    }
-    await dispatch(placeOrder(billingDetail));
-    await dispatch(invoiceData(invoiceData2));
-    await dispatch(cartEmpty());
 
-    navigate(`/checkout/INV-${invNumber.toString()}`);
+    const confirmOrder = {confirmProducts, customerInfo, paymentDetails, grandPrice}
+    await dispatch(placeOrder(confirmOrder));
+    await dispatch(cartEmpty());
   };
+  console.log(orders);
   return (
     <section>
       <div className="container mx-auto">
