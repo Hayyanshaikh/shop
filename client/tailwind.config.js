@@ -8,7 +8,7 @@ export default {
     extend: {
       container: {
         center: true,
-        padding: '1.5rem', // Default padding
+        padding: '1.5rem',
       },
     },
   },

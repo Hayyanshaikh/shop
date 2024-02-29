@@ -21,7 +21,7 @@ const Sidebar = () => {
 		     			<li key={key}>
 		     				<NavLink to={nav.link} className="sidebar_menu_item p-2 px-3 w-full flex transition hover:bg-orange-400 rounded flex gap-1 items-center">
 		     					{nav.icon}
-		     					<span className="text-sm font-semibold">{nav.title}</span>
+		     					<span className="text-sm font-medium">{nav.title}</span>
 		     				</NavLink>
 		     			</li>
      				))

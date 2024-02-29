@@ -1,21 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Button = ({ text, type, link, className, onClick }) => {
-  const handleButtonClick = () => {
-    if (onClick) {
-      onClick();
-    }
+const Button = ({ text, type = 'button', link, className, onClick }) => {
+  const handleClick = () => {
+    onClick && onClick();
   };
 
-  return link ? (
-    <Link to={link} className={`text-black block text-center bg-orange-500 font-semibold py-2 px-6 transition rounded ${className}`} onClick={handleButtonClick}>
+  const ButtonComponent = link ? Link : 'button';
+
+  return (
+    <ButtonComponent to={link} type={type} className={`text-black block text-center bg-orange-500 font-semibold py-2 px-6 transition rounded ${className}`} onClick={handleClick}>
       {text}
-    </Link>
-  ) : (
-    <button type={type} className={`text-black block text-center bg-orange-500 font-semibold py-2 px-6 transition rounded ${className}`} onClick={handleButtonClick}>
-      {text}
-    </button>
+    </ButtonComponent>
   );
 };
 

@@ -1,27 +1,33 @@
-import React from 'react';
-import * as Icon from '@phosphor-icons/react';
+import { useState } from 'react'
+import { Switch } from '@headlessui/react'
 
-const CustomCheckBox = ({ label, checked, onChange }) => {
+const Checkbox = ({ checked, onChange, label }) => {
+  const [enabled, setEnabled] = useState(checked)
+
+  const handleChange = () => {
+    setEnabled(!enabled);
+    onChange(!enabled);
+  }
+
   return (
-    <label className="inline-flex items-center cursor-pointer">
-      <div className="relative">
-        <input
-          type="checkbox"
-          className="hidden"
-          checked={checked}
-          onChange={onChange}
+    <div className="flex items-center gap-2">
+      <label className="block font-semibold">{label}</label>
+      <Switch
+        checked={enabled}
+        onChange={handleChange}
+        className={`${
+          enabled ? 'bg-orange-400' : 'bg-gray-200'
+        } relative inline-flex h-6 w-11 items-center rounded-full`}
+      >
+        <span className="sr-only">{label}</span>
+        <span
+          className={`${
+            enabled ? 'translate-x-6' : 'translate-x-1'
+          } inline-block h-4 w-4 transform rounded-full bg-white transition`}
         />
-        <div className={`${checked ? "bg-orange-400" : "bg-white"} overflow-hidden border w-5 h-5 flex flex-shrink-0 justify-center items-center rounded`}>
-          {checked && (
-            <div className="text-black leading-none overflow-hidden">
-              <Icon.Check className="leading-none" size={10} weight="bold" />
-            </div>
-          )}
-        </div>
-      </div>
-      <span className="ml-2 text-gray-700">{label}</span>
-    </label>
-  );
-};
+      </Switch>
+    </div>
+  )
+}
 
-export default CustomCheckBox;
+export default Checkbox;
