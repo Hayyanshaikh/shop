@@ -19,8 +19,9 @@ import AddProduct from '../admin/pages/AddProduct.jsx';
 import AddCategory from '../admin/pages/AddCategory.jsx';
 import OrderDetail from '../admin/pages/OrderDetail.jsx';
 import CustomerDetail from '../admin/pages/CustomerDetail.jsx';
-import EditProduct from '../admin/pages/EditProduct.jsx'; // Added
-import EditCategory from '../admin/pages/EditCategory.jsx'; // Added
+import EditProduct from '../admin/pages/EditProduct.jsx';
+import EditCategory from '../admin/pages/EditCategory.jsx';
+import AdminLogin from '../admin/pages/Login.jsx';
 
 const routes = [
   {
@@ -80,7 +81,7 @@ const routes = [
       },
       {
         path: 'orders/:orderId',
-        element: <OrderDetail />,
+        element: <OrdersAdmin />,
       },
       {
         path: 'customers',
@@ -103,11 +104,11 @@ const routes = [
         element: <AddCategory />,
       },
       {
-        path: 'products/:productId', // Added path for EditProduct
+        path: 'products/:productId',
         element: <EditProduct />,
       },
       {
-        path: 'categories/:categoryId', // Added path for EditCategory
+        path: 'categories/:categoryId',
         element: <EditCategory />,
       },
       {
@@ -119,6 +120,11 @@ const routes = [
         element: <SettingsAdmin />,
       },
     ],
+  },
+
+  {
+    path: 'admin/login',
+    element: <AdminLogin />,
   },
 ];
 

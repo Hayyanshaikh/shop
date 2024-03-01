@@ -5,11 +5,12 @@ import productsData from "../../json_files/products.json";
 import * as Icon from "@phosphor-icons/react";
 import Pagination from '../../components/Pagination.jsx';
 import Button from '../../components/Button.jsx';
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 
 const Products = () => {
   const [value, setValue] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const navigate = useNavigate();
 
   const menuItems = () => {
     const category = productsData.map((item) => item.category);
@@ -40,6 +41,16 @@ const Products = () => {
     product.name.toLowerCase().includes(value.toLowerCase()) ||
     product.category.toLowerCase().includes(value.toLowerCase())
   );
+
+  const handleAction = (label, productId) => {
+    if (label === "edit") {
+      navigate(`/admin/products/${productId.toString()}`)
+      // setIsOpenDetail(true);
+    }
+    else if (label === "delete"){
+      // setConfirmDelete(true);
+    }
+  }
 
 
   return (
@@ -101,7 +112,7 @@ const Products = () => {
                 <Dropdown
                   menuItems={actionButtons}
                   position="right-0"
-                  onClick={(label) => alert(`${label} Product id's ${product.id}`)}
+                  onClick={(label) => handleAction(label, product.id)}
                   icon={
                     <Icon.DotsThreeOutline
                       className="text-gray-600"

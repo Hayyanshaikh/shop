@@ -1,7 +1,7 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 
-const Modal = ({ isOpen, closeModal, children }) => {
+const Modal = ({ isOpen, closeModal, children, modalSize }) => {
   return (
     <>
       <Transition appear show={isOpen} as={Fragment}>
@@ -28,7 +28,7 @@ const Modal = ({ isOpen, closeModal, children }) => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <div className="relative bg-white rounded-lg max-w-2xl w-full mx-auto p-6">
+              <div className={`relative bg-white rounded-lg w-full mx-auto p-6 ${modalSize ? modalSize : "max-w-2xl"}`}>
                 <div className="absolute top-0 right-0 mt-4 mr-4">
                   <button
                     type="button"
