@@ -1,13 +1,35 @@
 import React, { useState, useEffect } from "react";
 import Select from "../components/Select.jsx";
 import Dropdown from "../components/Dropdown.jsx";
+import Checkbox from '../components/Checkbox.jsx';
+import Modal from "../components/Modal.jsx";
 import categoriesData from "../../json_files/categories.json";
 import * as Icon from "@phosphor-icons/react";
 import Pagination from '../../components/Pagination.jsx';
+import Button from '../../components/Button.jsx';
+import {useNavigate} from 'react-router-dom';
 
 const Products = () => {
   const [value, setValue] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    category: '',
+    featured: false,
+    parentCategory: ''
+  });
+
+  const handleChange = (name, e) => {
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: e.target.value
+    }));
+  };
+
 
   const menuItems = () => {
     const categoriesAndSubcategories = categoriesData.flatMap(item => [
@@ -20,7 +42,6 @@ const Products = () => {
     return uniqueCategories;
   };
 
-
   const actionButtons = [{
       icon: <Icon.PencilSimple size={18} weight="duotone" />,
       label: "Edit",
@@ -30,10 +51,6 @@ const Products = () => {
       label: "Delete",
     },
   ];
-
-  const itemsPerPage = 10;
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -51,6 +68,35 @@ const Products = () => {
     return subcategoryMatches;
   });
 
+  const handleAddCategory = () => {
+      setIsOpen(true);
+  }
+
+  const handleSubmit  = () => {
+    setIsOpen(false);
+  }
+
+  const closeModal = () => {
+    setIsOpen(false);
+      navigate(`/admin/categories`)
+  };
+
+  const handleAction = (label, categoryId) => {
+
+    const category = categoriesData.find(category => categoryId === category.id.toString());
+    
+    if (label === "edit") {
+      setIsOpen(true);
+      navigate(`/admin/categories/${categoryId}`);
+      setFormData({
+        category: category.name,
+        featured: category.featured,
+      })
+    }
+    else if (label === "delete"){
+      setConfirmDelete(true);
+    }
+  }
 
 
   return (
@@ -68,11 +114,52 @@ const Products = () => {
             <Icon.MagnifyingGlass size={16} />
           </button>
         </div>
-        <Select 
-          data={menuItems()}
-          title="Filter Category"
-          onClick={(label) => setValue(label)}
-        />
+        <div className="flex gap-2 items-center">
+          <Select 
+            data={menuItems()}
+            title="Filter Category"
+            onClick={(label) => setValue(label)}
+          />
+          <Button
+            text="Add category"
+            onClick={handleAddCategory}
+          />
+          <Modal isOpen={isOpen} closeModal={closeModal} modalSize="max-w-lg">
+            <h1 className="text-xl font-semibold mb-4">Add a new category</h1>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="flex flex-col">
+                <label htmlFor="category" className="font-semibold text-sm">Category:</label>
+                <input type="text" name="category" value={formData.category} onChange={(e)=> handleChange("category", e)} className="border border-gray-300 rounded-md px-3 py-2 mt-1" />
+              </div>
+              <div className="flex flex-col">
+                <label htmlFor="subCategories" className="font-semibold text-sm mb-1">Parnet Categories:</label>
+                <Select 
+                  data={menuItems()}
+                  title="Filter Category"
+                  onClick={(label) => setValue(label)}
+                />
+              </div>
+              <div className="flex items-center">
+                <label htmlFor="featured" className="font-semibold text-sm">Featured:</label>
+                <Checkbox
+                  checked={formData.featured}
+                  onChange={() => setFormData({ ...formData, featured: !formData.featured })}
+                />
+              </div>
+              <div className="flex justify-end gap-2">
+                <Button
+                  text="Close"
+                  onClick={closeModal}
+                  className="bg-gray-200/75"
+                />
+                <Button
+                  text="Add"
+                  onClick={closeModal}
+                />
+              </div>
+            </form>
+          </Modal>
+        </div>
       </div>
       <table className="min-w-full bg-white border text-left">
         <thead>
@@ -101,7 +188,7 @@ const Products = () => {
 				        <Dropdown
                   menuItems={actionButtons}
                   position="right-0"
-                  onClick={(label) => alert(`${label} Product id's ${category.id}`)}
+                  onClick={(label) => handleAction(label, category.id.toString())}
                   icon={
                     <Icon.DotsThreeOutline
                       className="text-gray-600"
@@ -113,7 +200,6 @@ const Products = () => {
 				    </tr>
 				  ))}
 				</tbody>
-
       </table>
       <Pagination
         totalItems={filteredData.length}

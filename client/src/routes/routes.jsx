@@ -17,10 +17,8 @@ import CouponsAdmin from '../admin/pages/Coupons.jsx';
 import SettingsAdmin from '../admin/pages/Settings.jsx';
 import AddProduct from '../admin/pages/AddProduct.jsx';
 import AddCategory from '../admin/pages/AddCategory.jsx';
-import OrderDetail from '../admin/pages/OrderDetail.jsx';
 import CustomerDetail from '../admin/pages/CustomerDetail.jsx';
 import EditProduct from '../admin/pages/EditProduct.jsx';
-import EditCategory from '../admin/pages/EditCategory.jsx';
 import AdminLogin from '../admin/pages/Login.jsx';
 
 const routes = [
@@ -96,12 +94,12 @@ const routes = [
         element: <CategoriesAdmin />,
       },
       {
-        path: 'add-product',
-        element: <AddProduct />,
-      },
-      {
         path: 'add-category',
         element: <AddCategory />,
+      },
+      {
+        path: 'add-product',
+        element: <AddProduct />,
       },
       {
         path: 'products/:productId',
@@ -109,7 +107,7 @@ const routes = [
       },
       {
         path: 'categories/:categoryId',
-        element: <EditCategory />,
+        element: <CategoriesAdmin />,
       },
       {
         path: 'coupons',

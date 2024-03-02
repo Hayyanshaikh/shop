@@ -43,7 +43,6 @@ const AddProduct = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  console.log(formData);
     setFormData({
       id: '',
       name: '',

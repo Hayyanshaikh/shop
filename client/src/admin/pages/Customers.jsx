@@ -6,13 +6,13 @@ import * as Icon from "@phosphor-icons/react";
 import Pagination from '../../components/Pagination.jsx';
 
 const Customer = () => {
-  const [value, setValue] = useState("");
+  const [searchValue, setSearchValue] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
 
   const menuItems = () => {
-    const name = customersData.map((item) => item.name);
-    const uniqueCategories = Array.from(new Set(name));
-    return uniqueCategories;
+    const names = customersData.map((item) => item.name);
+    const uniqueNames = Array.from(new Set(names));
+    return uniqueNames;
   };
 
   const actionButtons = [
@@ -34,9 +34,9 @@ const Customer = () => {
     setCurrentPage(pageNumber);
   };
 
-  const filteredData = customersData.filter((customer) =>
-    customer.name.toLowerCase().includes(value.toLowerCase())
-  );
+  const filteredCustomers = customersData.filter((customer) => {
+    return customer.name.toLowerCase().includes(searchValue.toLowerCase())
+  });
 
 
   return (
@@ -45,8 +45,8 @@ const Customer = () => {
         <div className="flex border rounded overflow-hidden">
           <input
             type="text"
-            value={value}
-            onChange={(e) => setValue(e.target.value)}
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
             placeholder="Search..."
             className="p-1 px-2 focus:outline-none"
           />
@@ -57,47 +57,47 @@ const Customer = () => {
         <Select 
           data={menuItems()}
           title="Filter Category"
-          onClick={(label) => setValue(label)}
+          onClick={(label) => setSearchValue(label)}
         />
       </div>
-    <table className="min-w-full bg-white border text-left">
-      <thead>
-        <tr>
-          <th className="py-2 px-4 border-b font-semibold">ID</th>
-          <th className="py-2 px-4 border-b font-semibold">Name</th>
-          <th className="py-2 px-4 border-b font-semibold">Email</th>
-          <th className="py-2 px-4 border-b font-semibold">Phone</th>
-          <th className="py-2 px-4 border-b font-semibold">Address</th>
-          <th className="py-2 px-4 border-b font-semibold">Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        {filteredData.slice(startIndex, endIndex).map((customer) => (
-          <tr key={customer.id}>
-            <td className="py-2 px-4 border-b">{customer.id}</td>
-            <td className="py-2 px-4 border-b">{customer.name}</td>
-            <td className="py-2 px-4 border-b">{customer.email}</td>
-            <td className="py-2 px-4 border-b">{customer.phone}</td>
-            <td className="py-2 px-4 border-b">{customer.address}</td>
-            <td className="py-2 px-4 border-b">
-              <Dropdown
-                menuItems={actionButtons}
-                position="right-0"
-                onClick={(label) => alert(`${label} Customer id's ${customer.id}`)}
-                icon={
-                  <Icon.DotsThreeOutline
-                    className="text-gray-600"
-                    weight="fill"
-                  />
-                }
-              />
-            </td>
+      <table className="min-w-full bg-white border text-left">
+        <thead>
+          <tr>
+            <th className="py-2 px-4 border-b font-semibold">ID</th>
+            <th className="py-2 px-4 border-b font-semibold">Name</th>
+            <th className="py-2 px-4 border-b font-semibold">Email</th>
+            <th className="py-2 px-4 border-b font-semibold">Phone</th>
+            <th className="py-2 px-4 border-b font-semibold">Address</th>
+            <th className="py-2 px-4 border-b font-semibold">Action</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {filteredCustomers.slice(startIndex, endIndex).map((customer, key) => (
+            <tr key={key}>
+              <td className="py-2 px-4 border-b">{customer.id}</td>
+              <td className="py-2 px-4 border-b">{customer.name}</td>
+              <td className="py-2 px-4 border-b">{customer.email}</td>
+              <td className="py-2 px-4 border-b">{customer.phone}</td>
+              <td className="py-2 px-4 border-b">{customer.address}</td>
+              <td className="py-2 px-4 border-b">
+                <Dropdown
+                  menuItems={actionButtons}
+                  position="right-0"
+                  onClick={(label) => alert(`${label} Customer id's ${customer.id}`)}
+                  icon={
+                    <Icon.DotsThreeOutline
+                      className="text-gray-600"
+                      weight="fill"
+                    />
+                  }
+                />
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
       <Pagination
-        totalItems={filteredData.length}
+        totalItems={filteredCustomers.length}
         itemsPerPage={itemsPerPage}
         onPageChange={handlePageChange}
       />

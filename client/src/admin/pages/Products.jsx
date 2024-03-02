@@ -6,6 +6,7 @@ import * as Icon from "@phosphor-icons/react";
 import Pagination from '../../components/Pagination.jsx';
 import Button from '../../components/Button.jsx';
 import {Link, useNavigate} from 'react-router-dom'
+import Badge from "../../components/Badge.jsx";
 
 const Products = () => {
   const [value, setValue] = useState("");

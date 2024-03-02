@@ -1,0 +1,233 @@
+[
+  {
+    "customer_id": "1",
+    "addresses": [
+      {
+        "address_id": "1",
+        "type": "Shipping",
+        "street": "123 Main Street",
+        "city": "Anytown",
+        "state": "NY",
+        "postal_code": "12345",
+        "country": "US"
+      },
+      {
+        "address_id": "2",
+        "type": "Billing",
+        "street": "456 Oak Avenue",
+        "city": "Othertown",
+        "state": "CA",
+        "postal_code": "67890",
+        "country": "CA"
+      }
+    ]
+  },
+  {
+    "customer_id": "2",
+    "addresses": [
+      {
+        "address_id": "3",
+        "type": "Shipping",
+        "street": "789 Elm Street",
+        "city": "Anothertown",
+        "state": "TX",
+        "postal_code": "54321",
+        "country": "US"
+      }
+    ]
+  },
+  {
+    "customer_id": "3",
+    "addresses": [
+      {
+        "address_id": "4",
+        "type": "Shipping",
+        "street": "456 Park Avenue",
+        "city": "Sometown",
+        "state": "CA",
+        "postal_code": "45678",
+        "country": "US"
+      },
+      {
+        "address_id": "5",
+        "type": "Billing",
+        "street": "789 Elm Street",
+        "city": "Anothertown",
+        "state": "TX",
+        "postal_code": "54321",
+        "country": "US"
+      }
+    ]
+  },
+  {
+    "customer_id": "4",
+    "addresses": [
+      {
+        "address_id": "6",
+        "type": "Shipping",
+        "street": "321 Maple Avenue",
+        "city": "Anotherville",
+        "state": "TX",
+        "postal_code": "98765",
+        "country": "US"
+      }
+    ]
+  },
+  {
+    "customer_id": "5",
+    "addresses": [
+      {
+        "address_id": "7",
+        "type": "Shipping",
+        "street": "234 Oak Street",
+        "city": "Sometown",
+        "state": "CA",
+        "postal_code": "34567",
+        "country": "US"
+      },
+      {
+        "address_id": "8",
+        "type": "Billing",
+        "street": "567 Elm Street",
+        "city": "Anothertown",
+        "state": "TX",
+        "postal_code": "54321",
+        "country": "US"
+      }
+    ]
+  },
+  {
+    "customer_id": "6",
+    "addresses": [
+      {
+        "address_id": "9",
+        "type": "Shipping",
+        "street": "789 Pine Street",
+        "city": "Otherville",
+        "state": "CA",
+        "postal_code": "23456",
+        "country": "US"
+      },
+      {
+        "address_id": "10",
+        "type": "Billing",
+        "street": "123 Elm Street",
+        "city": "Anothertown",
+        "state": "TX",
+        "postal_code": "54321",
+        "country": "US"
+      }
+    ]
+  },
+  {
+    "customer_id": "7",
+    "addresses": [
+      {
+        "address_id": "11",
+        "type": "Shipping",
+        "street": "567 Maple Avenue",
+        "city": "Sometown",
+        "state": "CA",
+        "postal_code": "45678",
+        "country": "US"
+      }
+    ]
+  },
+  {
+    "customer_id": "8",
+    "addresses": [
+      {
+        "address_id": "12",
+        "type": "Shipping",
+        "street": "345 Oak Street",
+        "city": "Anothertown",
+        "state": "TX",
+        "postal_code": "23456",
+        "country": "US"
+      },
+      {
+        "address_id": "13",
+        "type": "Billing",
+        "street": "678 Pine Street",
+        "city": "Sometown",
+        "state": "CA",
+        "postal_code": "34567",
+        "country": "US"
+      }
+    ]
+  },
+  {
+    "customer_id": "9",
+    "addresses": [
+      {
+        "address_id": "14",
+        "type": "Shipping",
+        "street": "789 Maple Avenue",
+        "city": "Anotherville",
+        "state": "TX",
+        "postal_code": "23456",
+        "country": "US"
+      }
+    ]
+  },
+  {
+    "customer_id": "10",
+    "addresses": [
+      {
+        "address_id": "15",
+        "type": "Shipping",
+        "street": "123 Oak Street",
+        "city": "Sometown",
+        "state": "CA",
+        "postal_code": "34567",
+        "country": "US"
+      },
+      {
+        "address_id": "16",
+        "type": "Billing",
+        "street": "456 Pine Street",
+        "city": "Anothertown",
+        "state": "TX",
+        "postal_code": "23456",
+        "country": "US"
+      }
+    ]
+  },
+  {
+    "customer_id": "11",
+    "addresses": [
+      {
+        "address_id": "17",
+        "type": "Shipping",
+        "street": "567 Oak Street",
+        "city": "Anothertown",
+        "state": "TX",
+        "postal_code": "23456",
+        "country": "US"
+      }
+    ]
+  },
+  {
+    "customer_id": "12",
+    "addresses": [
+      {
+        "address_id": "18",
+        "type": "Shipping",
+        "street": "678 Oak Street",
+        "city": "Sometown",
+        "state": "CA",
+        "postal_code": "34567",
+        "country": "US"
+      },
+      {
+        "address_id": "19",
+        "type": "Billing",
+        "street": "123 Maple Avenue",
+        "city": "Anotherville",
+        "state": "TX",
+        "postal_code": "23456",
+        "country": "US"
+      }
+    ]
+  }
+]

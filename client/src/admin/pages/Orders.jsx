@@ -4,10 +4,12 @@ import * as Icon from "@phosphor-icons/react";
 import Modal from '../components/Modal.jsx';
 import Dropdown from "../components/Dropdown.jsx";
 import Button from "../../components/Button.jsx";
+import Badge from "../../components/Badge.jsx";
 import orderData from "../../json_files/orders.json";
 import productData from "../../json_files/products.json";
+import customerData from "../../json_files/customer.json";
 import Pagination from '../../components/Pagination.jsx';
-import {useNavigate} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom';
 
 const Orders = () => {
   const [value, setValue] = useState("");
@@ -20,9 +22,13 @@ const Orders = () => {
   const navigate = useNavigate();
 
   const menuItems = () => {
-    const customer_name = orderData.map((item) => item.customer_name);
-    const uniqueCategories = Array.from(new Set(customer_name));
-    return uniqueCategories;
+    const customerNames = orderData.map((item) => {
+      const customer = customerData.find(customer => item.customer_id.toString() === customer.id.toString());
+      return customer ? customer.name : null;
+    });
+    
+    const uniqueCustomerNames = Array.from(new Set(customerNames.filter(name => name !== null)));
+    return uniqueCustomerNames;
   };
 
   const actionButtons = [
@@ -46,19 +52,19 @@ const Orders = () => {
 
   useEffect(() => {
     const combinedOrders = orderData.map((order) => {
-      // Extract product IDs from the order
       const productIds = Array.isArray(order.product_id) ? order.product_id : [order.product_id];
 
-      // Find corresponding products from productData
       const products = productIds.map(productId => {
         return productData.find(product => product.id === productId);
       });
 
       const product = products.map(product => {
         return product ? product.name : "N/A";
-      })
+      });
 
-      return {...order, product: product.join(', ')}
+      const customer = customerData.find(customer => customer.id.toString() === order.customer_id.toString());
+
+      return {...order, product: product.join(', '), customer: customer}
 
     });
 
@@ -66,8 +72,11 @@ const Orders = () => {
   }, []);
 
   const filteredData = combinedData.filter((order) => {
-    return order.customer_name.toLowerCase().includes(value.toLowerCase()) || order.product.toLowerCase().includes(value.toLowerCase());
+    if (order.customer) {
+      return order.customer.name.toString().toLowerCase().includes(value.toLowerCase()) || order.product.toLowerCase().includes(value.toLowerCase());
+    }
   });
+
 
   const closeModal = () => {
     if (!isOpenDetail) {
@@ -86,7 +95,9 @@ const Orders = () => {
       return productData.filter(product => productId === product.id)
     }).flat();
 
-    const combineOrder = {...order, products: orderProduct};
+    const customer = customerData.find(customer => customer.id.toString() === order.customer_id.toString());
+
+    const combineOrder = {...order, products: orderProduct, customer: customer};
 
     if (label === "view") {
       navigate(`/admin/orders/${orderId}`)
@@ -97,7 +108,6 @@ const Orders = () => {
       setConfirmDelete(true);
     }
   }
-
   return (
     <div>
       <div className="flex gap-2 mb-4 items-center justify-between">
@@ -126,7 +136,6 @@ const Orders = () => {
             <th className="py-2 px-4 border-b font-semibold">Products</th>
             <th className="py-2 px-4 border-b font-semibold">Customer Name</th>
             <th className="py-2 px-4 border-b font-semibold">Phone</th>
-            <th className="py-2 px-4 border-b font-semibold">Address</th>
             <th className="py-2 px-4 border-b font-semibold">Status</th>
             <th className="py-2 px-4 border-b font-semibold">Action</th>
           </tr>
@@ -136,10 +145,11 @@ const Orders = () => {
             <tr key={order.order_id}>
               <td className="py-2 px-4 border-b">{order.order_id}</td>
               <td className="py-2 px-4 border-b">{order.product}</td>
-              <td className="py-2 px-4 border-b">{order.customer_name}</td>
-              <td className="py-2 px-4 border-b">{order.phone}</td>
-              <td className="py-2 px-4 border-b">{order.address}</td>
-              <td className="py-2 px-4 border-b">{order.status}</td>
+              <td className="py-2 px-4 border-b">{order.customer && order.customer.name}</td>
+              <td className="py-2 px-4 border-b">{order.customer && order.customer.phone}</td>
+              <td className="py-2 px-4 border-b">
+                <Badge status={order.status} />
+              </td>
               <td className="py-2 px-4 border-b">
                 <Dropdown
                   menuItems={actionButtons}
@@ -173,13 +183,13 @@ const Orders = () => {
           <p className="text-gray-700 mt-2 text-center">Are you sure you want to delete this order?</p>
           <div className="mt-6 flex justify-center">
             <Button
-              className="px-4 py-2 bg-red-500 text-white rounded-md mr-2"
+              className="bg-red-500 text-white mr-2"
               onClick={confirmDelete}
               text="Delete"
             />
               
             <Button
-              className="px-4 py-2 bg-gray-300 text-gray-800 rounded-md"
+              className="bg-gray-300/75"
               onClick={closeModal}
               text="Cancel"
             />
@@ -190,7 +200,7 @@ const Orders = () => {
 
       <Modal isOpen={isOpenDetail} closeModal={closeModal}>
         <div className="flex flex-col pb-4 border-b mb-4">
-          <h5 className="text-xl font-semibold">Order Id</h5>
+          <h5 className="text-xl font-semibold">Order Id: #{orderDetail && orderDetail.order_id}</h5>
           <p className="text-sm font-medium text-gray-400">Order date: <span className="font-semibold text-gray-600">Feb 16, 2022</span></p>
         </div>
         <div className="flex flex-col gap-4 pb-4 border-b mb-4">
@@ -228,19 +238,19 @@ const Orders = () => {
                   <tbody className="bg-white divide-y divide-gray-200">
                     <tr className="text-sm">
                       <td className="px-3 py-2 whitespace-nowrap font-semibold capitalize">Customer Name:</td>
-                      <td className="px-3 py-2 whitespace-nowrap text-gray-500 font-medium capitalize">{orderDetail && orderDetail.customer_name}</td>
+                      <td className="px-3 py-2 whitespace-nowrap text-gray-500 font-medium capitalize">{orderDetail && orderDetail.customer.name}</td>
                     </tr>
                     <tr className="text-sm">
                       <td className="px-3 py-2 whitespace-nowrap font-semibold capitalize">Email:</td>
-                      <td className="px-3 py-2 whitespace-nowrap text-gray-500 font-medium">{orderDetail && orderDetail.email}</td>
+                      <td className="px-3 py-2 whitespace-nowrap text-gray-500 font-medium">{orderDetail && orderDetail.customer.email}</td>
                     </tr>
                     <tr className="text-sm">
                       <td className="px-3 py-2 whitespace-nowrap font-semibold capitalize">Phone:</td>
-                      <td className="px-3 py-2 whitespace-nowrap text-gray-500 font-medium">{orderDetail && orderDetail.phone}</td>
+                      <td className="px-3 py-2 whitespace-nowrap text-gray-500 font-medium">{orderDetail && orderDetail.customer.phone}</td>
                     </tr>
                     <tr className="text-sm">
                       <td className="px-3 py-2 whitespace-nowrap font-semibold capitalize">Address:</td>
-                      <td className="px-3 py-2 whitespace-nowrap text-gray-500 font-medium">{orderDetail && orderDetail.address}</td>
+                      <td className="px-3 py-2 whitespace-nowrap text-gray-500 font-medium">{orderDetail && orderDetail.customer.address}</td>
                     </tr>
                     <tr className="text-sm">
                       <td className="px-3 py-2 whitespace-nowrap font-semibold capitalize">Order Date:</td>
@@ -265,7 +275,7 @@ const Orders = () => {
           <Button
             text="Discard"
             type="button"
-            className="bg-red-100"
+            className="bg-gray-300/75"
             onClick={()=> setIsOpenDetail(false)}
           />
           <Button
