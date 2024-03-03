@@ -12,6 +12,7 @@ import {useNavigate} from 'react-router-dom';
 const Products = () => {
   const [value, setValue] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [confirmDelete, setConfirmDelete] = useState(false);
   const itemsPerPage = 10;
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
@@ -78,7 +79,8 @@ const Products = () => {
 
   const closeModal = () => {
     setIsOpen(false);
-      navigate(`/admin/categories`)
+    setConfirmDelete(false);
+    navigate(`/admin/categories`)
   };
 
   const handleAction = (label, categoryId) => {
@@ -206,6 +208,28 @@ const Products = () => {
         itemsPerPage={itemsPerPage}
         onPageChange={handlePageChange}
       />
+      <Modal isOpen={confirmDelete} closeModal={closeModal} modalSize="max-w-md">
+        <div>
+          <div className="flex justify-center items-center flex-col">
+            <Icon.WarningCircle size={70} weight="duotone" className="text-red-500 stroke-[2px]" />
+            <h2 className="text-xl font-bold text-gray-800">Confirmation</h2>
+          </div>
+          <p className="text-gray-700 mt-2 text-center">Are you sure you want to delete this order?</p>
+          <div className="mt-6 flex justify-center">
+            <Button
+              className="bg-red-500 text-white mr-2"
+              onClick={confirmDelete}
+              text="Delete"
+            />
+              
+            <Button
+              className="bg-gray-300/75"
+              onClick={closeModal}
+              text="Cancel"
+            />
+          </div>
+        </div>
+      </Modal>
     </div>
   );
 };

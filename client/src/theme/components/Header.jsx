@@ -36,7 +36,7 @@ const Header = () => {
               <Link to="/wishlist" className="hover:text-gray-300">
                 <Icon.Heart size={24} color="#fbe1cc" weight="duotone" />
               </Link>
-              <Link to={auth.auth ? `users/${username}` : "/login"} className="hover:text-gray-300">
+              <Link to={"login"} className="hover:text-gray-300">
                 <Icon.UserCircle size={24} color="#fbe1cc" weight="duotone" />
               </Link>
             </div>

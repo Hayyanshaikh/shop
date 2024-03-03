@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Select from '../components/Select.jsx';
+import Texteditor from '../components/Texteditor.jsx';
 import CheckBox from '../components/CheckBox.jsx';
 import * as Icon from '@phosphor-icons/react';
 import Button from '../../components/Button.jsx';
@@ -84,12 +85,17 @@ const AddProduct = () => {
           />
         </div>
         <div className="mb-4">
+            <label htmlFor="quantity" className="block font-semibold mb-2">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" value={formData.quantity} onChange={handleChange} placeholder="Enter product quantity" className="w-full px-4 py-2 border rounded" required />
+          </div>
+        <div className="mb-4">
             <CheckBox
               label="Popular"
               checked={formData.popular}
               onChange={() => setFormData({ ...formData, popular: !formData.popular })}
             />
           </div>
+
       </div>
 
       {/* Main Content */}
@@ -99,19 +105,19 @@ const AddProduct = () => {
           {/* Form fields */}
           <div className="mb-4">
             <label htmlFor="name" className="block font-semibold mb-2">Name:</label>
-            <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} className="w-full px-4 py-2 border rounded" required />
+            <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} placeholder="Enter product name" className="w-full px-4 py-2 border rounded" required />
           </div>
           <div className="mb-4">
             <label htmlFor="price" className="block font-semibold mb-2">Price:</label>
-            <input type="number" id="price" name="price" value={formData.price} onChange={handleChange} className="w-full px-4 py-2 border rounded" required />
+            <input type="number" id="price" name="price" value={formData.price} onChange={handleChange} placeholder="Enter product price" className="w-full px-4 py-2 border rounded" required />
           </div>
           <div className="mb-4">
             <label htmlFor="description" className="block font-semibold mb-2">Description:</label>
-            <textarea id="description" name="description" value={formData.description} onChange={handleChange} className="w-full px-4 py-2 border rounded" required></textarea>
+            <textarea id="description" name="description" value={formData.description} onChange={handleChange} placeholder="Enter product description" className="w-full px-4 py-2 border rounded" required></textarea>
           </div>
           <div className="mb-4">
-            <label htmlFor="quantity" className="block font-semibold mb-2">Quantity:</label>
-            <input type="number" id="quantity" name="quantity" value={formData.quantity} onChange={handleChange} className="w-full px-4 py-2 border rounded" required />
+            <label htmlFor="description" className="block font-semibold mb-2">Description:</label>
+            <Texteditor/>
           </div>
           <Button
             type="submit"

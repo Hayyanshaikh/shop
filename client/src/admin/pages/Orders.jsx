@@ -197,7 +197,6 @@ const Orders = () => {
         </div>
       </Modal>
 
-
       <Modal isOpen={isOpenDetail} closeModal={closeModal}>
         <div className="flex flex-col pb-4 border-b mb-4">
           <h5 className="text-xl font-semibold">Order Id: #{orderDetail && orderDetail.order_id}</h5>

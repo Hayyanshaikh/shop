@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import productData from "../../json_files/products.json";
 import Button from '../../components/Button.jsx';
 import ProductCard_v2 from '../components/ProductCard_v2.jsx';
+import Tabs from '../components/Tabs.jsx';
 import Alert from '../../components/Alert.jsx';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../../store/slices/CartSlice.js';
@@ -54,19 +55,33 @@ const SingleProduct = () => {
     }
   }
 
+  const tabs = [
+    {
+      title: 'Description',
+      content: description,
+    },
+    {
+      title: 'Reviews',
+      content: "This is content of Tab 2",
+    }
+  ];
+
   return (
     <>
     <section>
       {alert && <Alert type={alert.type} message={alert.message} />}
       <div className="container">
         <div className="flex gap-8 items-center">
-          <div className="mb-4 flex-1 w-full rounded-md max-w-md max-h-[400px] overflow-hidden flex items-center justify-center">
-            <img
-              src={imageUrl}
-              alt={name}
-              className="w-full h-auto object-cover"
-            />
+          <div className="max-w-md w-full">
+            <div className="mb-4 flex-1 w-full rounded-md max-h-[400px] overflow-hidden flex items-center justify-center">
+              <img
+                src={imageUrl}
+                alt={name}
+                className="w-full h-auto object-cover"
+              />
+            </div>
           </div>
+
           <div className="flex-1 flex flex-col items-start gap-3">
             <Link to={`/categories/${category.toLowerCase().replace(/\s/g, "-")}`} className="bg-gray-200 text-black px-3 text-sm font-medium py-1 rounded">
               {category}
@@ -79,7 +94,8 @@ const SingleProduct = () => {
                   <span key={key} style={{background: color}} className={`p-2 inline-block rounded-full`}></span>
                ))}
             </div>
-            <p className="text-2xl text-orange-500 font-bold">
+
+            <p className="text-2xl text-black font-bold">
               ${price.toFixed(0)}
             </p>
             <Button
@@ -87,22 +103,26 @@ const SingleProduct = () => {
               text={quantity < 1 ? "Sold out" : "Add to cart"}
               className={`${quantity < 1 ? "text-red-500 bg-stone-100" : ""}`}
             />
+            <Tabs tabs={tabs} />
+
           </div>
         </div>
       </div>
     </section>
     {
-      relatedProducts.length > 1 && <section className="bg-gray-100">
-      {alert && <Alert type={alert.type} message={alert.message} />}
-      <div className="container">
-        <h2 className="text-3xl font-bold mb-10 capitalize">Related Products</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4">
-          {relatedProducts.slice(0, 4).map((product, key) =>(
-            <ProductCard_v2 product={product} key={key} productAlert={handleAlert}/>
-          ))}
-        </div>
-      </div>
-    </section>
+      relatedProducts.length > 1 &&
+      (
+        <section className="bg-gray-100">
+          <div className="container">
+            <h2 className="text-3xl font-bold mb-10 capitalize">Related Products</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4">
+              {relatedProducts.slice(0, 4).map((product, key) =>(
+                <ProductCard_v2 product={product} key={key} productAlert={handleAlert}/>
+              ))}
+            </div>
+          </div>
+        </section>
+      )
     }
     
     </>
