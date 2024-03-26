@@ -7,21 +7,23 @@ import categoriesData from "../../json_files/categories.json";
 import * as Icon from "@phosphor-icons/react";
 import Pagination from '../../components/Pagination.jsx';
 import Button from '../../components/Button.jsx';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 
-const Products = () => {
+const Categories = () => {
   const [value, setValue] = useState("");
+  const { categoryId } = useParams("");
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const [isOpen, setIsOpen] = useState(false);
+  const category = categoriesData.find(category => categoryId === category.id.toString());
+  const [isOpen, setIsOpen] = useState(categoryId != null ? true : false);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    category: '',
-    featured: false,
-    parentCategory: ''
+    category: category && category.name || "",
+    featured: category && category.featured || "",
   });
+
 
   const handleChange = (name, e) => {
     setFormData(prevState => ({
@@ -69,7 +71,12 @@ const Products = () => {
   });
 
   const handleAddCategory = () => {
-      setIsOpen(true);
+    setFormData({
+      category: '',
+      featured: false,
+      parentCategory: ''
+    });
+    setIsOpen(true);
   }
 
   const handleSubmit  = () => {
@@ -210,4 +217,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default Categories;

@@ -16,6 +16,10 @@ import CategoriesAdmin from '../admin/pages/Categories.jsx';
 import CouponsAdmin from '../admin/pages/Coupons.jsx';
 import SettingsAdmin from '../admin/pages/Settings.jsx';
 import AddProduct from '../admin/pages/AddProduct.jsx';
+import Pages from '../admin/pages/Pages.jsx';
+import Discounts from '../admin/pages/Discounts.jsx';
+import Reports from '../admin/pages/Reports.jsx';
+import AddPage from '../admin/pages/AddPage.jsx';
 import AddCategory from '../admin/pages/AddCategory.jsx';
 import CustomerDetail from '../admin/pages/CustomerDetail.jsx';
 import EditProduct from '../admin/pages/EditProduct.jsx';
@@ -116,6 +120,22 @@ const routes = [
       {
         path: 'settings',
         element: <SettingsAdmin />,
+      },
+      {
+        path: 'pages',
+        element: <Pages />,
+      },
+      {
+        path: 'add-page',
+        element: <AddPage />,
+      },
+      {
+        path: 'discounts',
+        element: <Discounts />,
+      },
+      {
+        path: 'reports',
+        element: <Reports />,
       },
     ],
   },

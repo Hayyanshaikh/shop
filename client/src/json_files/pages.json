@@ -1,0 +1,86 @@
+[
+    {
+      "id": 1,
+      "title": "Home",
+      "url": "/",
+      "content": "Welcome to our ecommerce website!",
+      "status": "published",
+      "template": {
+        "type": "page",
+        "layout": "with_sidebar",
+        "content": "<h1>Welcome to our ecommerce website!</h1>"
+      }
+    },
+    {
+      "id": 2,
+      "title": "Shop",
+      "url": "/shop",
+      "content": "Explore our products.",
+      "status": "published",
+      "template": {
+        "type": "shop",
+        "layout": "with_sidebar",
+        "content": "<h1>Explore our Products</h1>"
+      }
+    },
+    {
+      "id": 3,
+      "title": "Product Details",
+      "url": "/product-details",
+      "content": "View details of a specific product.",
+      "status": "published",
+      "template": {
+        "type": "product_details",
+        "layout": "with_sidebar",
+        "content": "<h1>Product Details</h1>"
+      }
+    },
+    {
+      "id": 4,
+      "title": "Cart",
+      "url": "/cart",
+      "content": "View your shopping cart.",
+      "status": "published",
+      "template": {
+        "type": "cart",
+        "layout": "with_sidebar",
+        "content": "<h1>Shopping Cart</h1>"
+      }
+    },
+    {
+      "id": 5,
+      "title": "Checkout",
+      "url": "/checkout",
+      "content": "Complete your purchase.",
+      "status": "published",
+      "template": {
+        "type": "checkout",
+        "layout": "without_sidebar",
+        "content": "<h1>Checkout</h1>"
+      }
+    },
+    {
+      "id": 6,
+      "title": "About Us",
+      "url": "/about",
+      "content": "Learn more about our company.",
+      "status": "published",
+      "template": {
+        "type": "page",
+        "layout": "without_sidebar",
+        "content": "<h1>About Us</h1>"
+      }
+    },
+    {
+      "id": 7,
+      "title": "Contact Us",
+      "url": "/contact",
+      "content": "Get in touch with us.",
+      "status": "published",
+      "template": {
+        "type": "page",
+        "layout": "with_sidebar",
+        "content": "<h1>Contact Us</h1>"
+      }
+    }
+]

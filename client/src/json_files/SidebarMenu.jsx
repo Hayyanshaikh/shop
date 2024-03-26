@@ -9,27 +9,27 @@ const SidebarMenu = [
   },
   {
     id: 2,
-    title: "Products",
-    icon: <Icon.Package size={20} weight="duotone" />,
-    link: "products",
-  },
-  {
-    id: 3,
     title: "Orders",
     icon: <Icon.Receipt size={20} weight="duotone" />,
     link: "orders",
   },
   {
-    id: 4,
-    title: "Customers",
-    icon: <Icon.Users size={20} weight="duotone" />,
-    link: "customers",
+    id: 3,
+    title: "Products",
+    icon: <Icon.Package size={20} weight="duotone" />,
+    link: "products",
   },
   {
-    id: 5,
+    id: 4,
     title: "Categories",
     icon: <Icon.FolderOpen size={20} weight="duotone" />,
     link: "categories",
+  },
+  {
+    id: 5,
+    title: "Customers",
+    icon: <Icon.Users size={20} weight="duotone" />,
+    link: "customers",
   },
   {
     id: 6,
@@ -39,6 +39,24 @@ const SidebarMenu = [
   },
   {
     id: 7,
+    title: "Pages",
+    icon: <Icon.Book size={20} weight="duotone" />,
+    link: "pages",
+  },
+  {
+    id: 8,
+    title: "Discounts",
+    icon: <Icon.Tag size={20} weight="duotone" />,
+    link: "discounts",
+  },
+  {
+    id: 9,
+    title: "Reports",
+    icon: <Icon.ChartPieSlice size={20} weight="duotone" />,
+    link: "reports",
+  },
+  {
+    id: 10,
     title: "Settings",
     icon: <Icon.Gear size={20} weight="duotone" />,
     link: "settings",
