@@ -22,6 +22,7 @@ section:not(.admin_main section){
 
 .sidebar_menu_item[aria-current="page"]{
 	background: #fb923c;
+    color: black;
 	font-weight: 500;
 }
 .admin_header{
@@ -30,4 +31,66 @@ section:not(.admin_main section){
 }
 .order_products_table tr:not(:last-child) td{
 	border-bottom: 1px solid #e5e7eb;
+}
+
+.quill {
+    border-radius: 5px;
+    overflow: hidden;
+    width: 100%
+}
+
+.ql-toolbar.ql-snow {
+    border: none!important;
+    padding: 10px!important;
+    min-height: 45px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #e5e7eb !important;
+    background: transparent;
+    border-radius: 5px 5px 0 0
+}
+
+.ql-snow.ql-toolbar button svg,.ql-snow .ql-toolbar button svg,.ql-snow .ql-picker:not(.ql-color-picker):not(.ql-icon-picker) svg {
+    float: left;
+    height: 100%;
+    border: none;
+    background: transparent;
+    padding: 0
+}
+
+.ql-container.ql-snow {
+    border: 1px solid #e5e7eb !important;
+    border-top: none!important;
+    border-radius: 0 0 5px 5px
+}
+
+.ql-editor {
+    min-height: 200px
+}
+
+.ql-toolbar button {
+    background: var(--white)!important;
+    border-radius: 3px;
+    padding: 4px!important;
+    display: flex!important;
+    align-items: center;
+    transition: .2s ease;
+    justify-content: center
+}
+
+.ql-toolbar .ql-formats {
+    display: inline-flex!important;
+    grid-gap: 10px!important;
+    margin: 0!important;
+    flex-wrap: wrap
+}
+
+.ql-editor.ql-blank:before {
+    font-style: inherit!important;
+    color: var(--gray-400)!important;
+    font-size: 14px
+}
+
+.ql-editor p {
+    font-size: 15px!important
 }
